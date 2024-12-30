@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    box-shadow: 0 0 100px white inset;
+    transition: 0.5s;
+}
+
+.story {
+    width: 800px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 46px;
+    padding: 30px;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    overflow: hidden;
+    animation: open 2s;
+    animation-delay: 0.5s;
+    border: 1px solid transparent;
+    transition: 0.7s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes open {
+    0% {
+        color: white;
+        box-shadow: 0px 0px 0px white;
+    }
+    10% {
+        box-shadow: 0px 0px 0px white;
+    }
+    40% {
+        color: white;
+        box-shadow:  33px 33px 65px #9f9f9f,-33px -33px 65px #ffffff;
+    }
+    100% {
+        color: black;
+        background: #ffffff;
+        box-shadow:  33px 33px 65px #9f9f9f,-33px -33px 65px #ffffff;
+    }
+}
+
+.story span {
+    line-height: 70px;
+    padding: 10px;
+    background-color: rgba(244, 244, 244, 0.349);
+    margin: 1px;
+    border-radius: 4px;
+}
+
+.active {
+    background-color: #ddd;
+    border-bottom: 3px solid rgb(142, 172, 255 );
+}
+.true {
+    color: green;
+    background-color: rgba(196, 254, 216, 0.349);
+}
+.false {
+    color: red;
+    background-color: rgba(254, 196, 196, 0.349);
+}
