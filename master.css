@@ -6,24 +6,38 @@
 
 body {
     height: 100vh;
-    box-shadow: 0 0 100px white inset;
+    box-shadow: 0 0 100px rgba(233, 199, 3, 0.5) inset;
     transition: 0.5s;
 }
 
+.time-bar {
+    width: 100%;
+    height: 12px;
+    position: absolute;
+    transition: 0.3s;
+    top: -2px;
+    background-color: rgb(39, 109, 202);
+}
+
 .story {
-    width: 800px;
+    width: 70vw;
     height: 600px;
+    text-wrap-mode: wrap;
+    text-wrap: balance;
+    scroll-behavior: smooth;
     position: absolute;
     top: 50%;
     left: 50%;
     border-radius: 46px;
-    padding: 30px;
+    /* padding: 30px; */
+    padding-left: 30px;
+    padding-right: 30px;
     transform: translate(-50%, -50%);
     font-size: 28px;
     overflow: hidden;
     animation: open 2s;
     animation-delay: 0.5s;
-    border: 1px solid transparent;
+    border: 1px solid rgb(233, 198, 3);
     transition: 0.7s;
     animation-fill-mode: forwards;
 }
@@ -55,15 +69,29 @@ body {
     border-radius: 4px;
 }
 
-.active {
-    background-color: #ddd;
+.story .active {
+    background-color: #eee;
     border-bottom: 3px solid rgb(142, 172, 255 );
 }
-.true {
+.story .true {
     color: green;
-    background-color: rgba(196, 254, 216, 0.349);
+    background-color: rgba(196, 254, 216, 0.521);
 }
-.false {
+.story .false {
     color: red;
-    background-color: rgba(254, 196, 196, 0.349);
+    background-color: rgba(254, 196, 196, 0.521);
+}
+
+.timer {
+    position: absolute;
+    font-size: 24px;
+    bottom: 60px;
+    right: 100px;
+    color: rgba(61, 60, 60, 0.616);
+    font-weight: bold;
+}
+
+.timer .time {
+    color: rgb(10, 10, 10);
+    font-size: 30px;
 }
