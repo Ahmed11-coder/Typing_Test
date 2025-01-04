@@ -1,28 +1,38 @@
 const storyBox = document.querySelector(".story");
 const TimeBox = document.querySelector(".timer .time");
+const Poup = document.querySelector(".poup");
+const PoupTime = document.querySelector(".poup .time");
+const PoupSpeed = document.querySelector(".poup .speed");
+const PoupAcc = document.querySelector(".poup .acc");
 const TimeBar = document.querySelector(".time-bar");
-const totalTime = 30;
+const Overlay = document.querySelector(".overlay");
+const totalTime = 60;
 let startGame = false;
-let counter = 1;
+let counter = 0;
 let mistakes = 0;
-let time = 30;
+let time = 60;
 
 TimeBox.innerHTML = time;
+PoupTime.innerHTML = totalTime;
 
+// Default Background Styling
 function defualt() {
     document.body.style.cssText = "box-shadow: 0 0 100px rgba(233, 199, 3, 0.5) inset";
     storyBox.style.cssText = "border-color: rgba(233, 199, 3);";
 }
 
+// Warning Background Styling
 function warning() {
     document.body.style.cssText = "box-shadow: 0 0 200px rgba(36, 96, 175, 0.48) inset";
 }
 
+// Mistake Background Styling
 function mistake() {
     storyBox.style.cssText = "border-color: red;";
     document.body.style.cssText = "box-shadow: 0 0 100px #ff000050 inset";
 }
 
+// Success Background Styling
 function success() {
     storyBox.style.cssText = "border-color: green;";
     document.body.style.cssText = "box-shadow: 0 0 100px #00800050 inset";
@@ -36,7 +46,7 @@ async function getStory(url) {
     
     const storyText = result[getRandomInd].story;
     
-    console.log(storyText);
+    storyBox.textContent = "";
     // Split The Story Text To Characters
     for (let i = 0; i < storyText.length; i++) {
         let char = document.createElement("span");
@@ -99,7 +109,10 @@ function TimerHandle() {
             clearInterval(Timer);
             document.removeEventListener("keydown", Typing);
             defualt();
-            console.log(((counter/5)-mistakes)/0.5)
+            Overlay.style.cssText = "opacity: 1";
+            PoupSpeed.innerHTML = `${Math.round(counter / 5 - mistakes) / (totalTime / 60)} WPM`;
+            PoupAcc.innerHTML = `${100 - Math.floor((mistakes/(mistakes+counter)) * 100)}%`;
+            Poup.style.cssText = 'opacity: 1;';
         }
         else {
             if (time <= 5) warning();
