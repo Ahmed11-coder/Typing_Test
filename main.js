@@ -42,9 +42,8 @@ function success() {
 async function getStory(url) {
     const response = await fetch(url);
     const result = await response.json();
-    const getRandomInd = Math.floor(Math.random() * result.length);
     
-    const storyText = result[getRandomInd].story;
+    const storyText = result.story;
     
     storyBox.textContent = "";
     // Split The Story Text To Characters
@@ -124,4 +123,4 @@ function TimerHandle() {
 document.addEventListener("keydown", Typing);
 
 
-getStory("https://shortstories-api.onrender.com/stories");
+getStory("https://shortstories-api.onrender.com/");
